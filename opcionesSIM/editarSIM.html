@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Sim's</title>
+
+    <script>
+        function mostrarInfo() {
+            const msisdnInfo = "123456789";
+            const nodoConcertIP = "10.0.0.1";
+            const nodoCondorIP = "10.0.0.2";
+            
+            document.getElementById('msisdn_info').textContent = msisdnInfo;
+            document.getElementById('nodo_concert_info').textContent = nodoConcertIP;
+            document.getElementById('nodo_condor_ip').textContent = nodoCondorIP;
+            document.getElementById('info_sim').style.display = 'block';
+            document.getElementById('nuevo_iccid_section').style.display = 'block';
+        }
+
+        function confirmarCambio() {
+            const iccidAntiguo = document.getElementById('iccid_antiguo').value;
+            const iccidNuevo = document.getElementById('iccid_nuevo').value;
+            const msisdnInfo = document.getElementById('msisdn_info').textContent;
+
+            if (iccidNuevo.length < 19 || iccidNuevo.length > 20) {
+                alert("El ICCID NUEVO debe tener entre 19 - 20 caracteres. Modifícalo y vuelve a intentar");
+                return;
+            }
+
+            if (iccidAntiguo.length < 19 || iccidAntiguo.length > 20) {
+                alert("El ICCID ANTIGUO debe tener 20 caracteres. Modifícalo y vuelve a intentar");
+                return;
+            }
+
+            if (iccidAntiguo === iccidNuevo) {
+                alert("El ICCID nuevo no puede ser igual al ICCID antiguo. Modifícalo y vuelve a intentar");
+                return;
+            }
+
+            if (confirm(`¿Estás seguro que quieres cambiar el ICCID ${iccidAntiguo} por ${iccidNuevo} para el MSISDN ${msisdnInfo}?`)) {
+                // Aquí puedes agregar la lógica para realizar el cambio en el servidor
+                alert("El ICCID ha sido cambiado exitosamente.");
+            } else {
+                alert("El cambio ha sido cancelado.");
+            }
+        }
+
+      
+    </script>
+</head>
+<body>
+    <header>Registro de Val's y Sim's | Zonas Pagas</header>
+    <h1>Sim</h1>
+    <nav>
+        <ul>
+            <li><a href="../inicio.html">Inicio</a></li>
+            <li><a href="../movimiento.html">Movimiento</a></li>
+            <li><a href="../val.html">Validadores</a></li>
+            <li><a href="../sim.html">Sims</a></li>
+            <li><a href="../ayuda.html">Ayuda y Manuales</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="editar_sim">
+            <h2>Modificar SIM</h2>
+            <form id="editar_sim_form">
+                <div>
+                    <h3>Ingresa ICCID antiguo:</h3>
+                    <input type="text" id="iccid_antiguo" name="iccid_antiguo" maxlength="20" required>
+                    <button type="button" onclick="mostrarInfo()">Buscar</button>
+                </div>
+                
+                <div id="info_sim" style="display: none;">
+                    <h3>Información del MSISDN</h3>
+                    <p><strong>MSISDN:</strong> <span id="msisdn_info"></span></p>
+                    <p><strong>Nodo Concert IP:</strong> <span id="nodo_concert_info"></span></p>
+                    <p><strong>Nodo Condor IP:</strong> <span id="nodo_condor_ip"></span></p>
+                </div>
+                
+                <div id="nuevo_iccid_section" style="display: none;">
+                    <h3>Ingresa ICCID Nuevo:</h3>
+                    <input type="text" id="iccid_nuevo" name="iccid_nuevo" maxlength="20" required>
+                    <button type="button" onclick="confirmarCambio()">Aceptar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Antonia Pacheco. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

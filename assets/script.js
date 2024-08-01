@@ -14,6 +14,7 @@ function confirmarCambio() {
     const iccidAntiguo = document.getElementById('iccid_antiguo').value;
     const iccidNuevo = document.getElementById('iccid_nuevo').value;
     const msisdnInfo = document.getElementById('msisdn_info').textContent;
+    const motivoCambio = document.getElementById('motivo_cambio').value;
 
     if (iccidNuevo.length < 19 || iccidNuevo.length > 20) {
         alert("El ICCID NUEVO debe tener entre 19 - 20 caracteres. Modifícalo y vuelve a intentar");
@@ -30,10 +31,18 @@ function confirmarCambio() {
         return;
     }
 
-    if (confirm(`¿Estás seguro que quieres cambiar el ICCID ${iccidAntiguo} por el ICCID ${iccidNuevo} para el MSISDN ${msisdnInfo}?`)) {
+    if (motivoCambio === "") {
+        alert("Debe seleccionar un motivo para el cambio.");
+        return;
+    }
+
+    if (confirm(`¿Estás seguro que quieres cambiar el ICCID ${iccidAntiguo} por el ICCID ${iccidNuevo} para el MSISDN ${msisdnInfo}?\nMotivo: ${motivoCambio}`)) {
         // Aquí puedes agregar la lógica para realizar el cambio en el servidor
         alert("El ICCID ha sido cambiado exitosamente.");
+        // Recargar la página después del cambio
+        location.reload();
     } else {
         alert("El cambio ha sido cancelado.");
     }
 }
+

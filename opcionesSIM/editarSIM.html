@@ -41,7 +41,18 @@
                 <div id="nuevo_iccid_section" style="display: none;">
                     <h3>Ingresa ICCID nuevo:</h3>
                     <input type="text" id="iccid_nuevo" name="iccid_nuevo" maxlength="20" required>
-                    <button type="button" onclick="confirmarCambio()">Aceptar</button>
+                    <div>
+                        <h3>Motivo del cambio:</h3>
+                        <select id="motivo_cambio" name="motivo_cambio" required>
+                            <option value="">Selecciona un motivo</option>
+                            <option value="Robo">Robo</option>
+                            <option value="Extravio">Extravio</option>
+                            <option value="Cambio de proveedor">Cambio de proveedor</option>
+                            <option value="Falla técnica">Falla técnica</option>
+                        </select>
+                        
+                    </div>
+                    <button type="button" onclick="confirmarCambio()">Cambiar ICCID</button>
                 </div>
             </form>
         </section>

@@ -1,3 +1,5 @@
+
+/*Este script es para mostrar la información del ICCID, la idea es que luego se busquen sus valores en la base de datos y recién allí aparezca*/
 function mostrarInfo() {
     const msisdnInfo = "56987787546";
     const nodoConcertIP = "10.228.56.1";
@@ -10,6 +12,8 @@ function mostrarInfo() {
     document.getElementById('nuevo_iccid_section').style.display = 'block';
 }
 
+/*En esta función validamos que lo que se está insertando en los cuadros de texto cumple el formato solicitado
+Además en esta parte se envia el mensaje de confirmación*/
 function confirmarCambio() {
     const iccidAntiguo = document.getElementById('iccid_antiguo').value;
     const iccidNuevo = document.getElementById('iccid_nuevo').value;
@@ -46,3 +50,18 @@ function confirmarCambio() {
     }
 }
 
+/*Con esta función estoy utlizano un editor WYSIWYG */
+
+document.addEventListener("DOMContentLoaded", function() {
+    tinymce.init({
+        selector: 'textarea#observacion',
+        plugins: 'lists link image table',
+        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
+    });
+});
+
+tinymce.init({
+    selector: 'textarea',  // Reemplaza con el selector adecuado para tu caso
+    plugins: 'advlist autolink lists link image charmap preview anchor textcolor',
+    toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+  });

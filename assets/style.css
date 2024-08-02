@@ -112,3 +112,15 @@ th {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
+textarea {
+    width: 100%;
+    max-width: 600px;
+    min-width: 200px;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    box-sizing: border-box;
+}

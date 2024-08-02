@@ -6,6 +6,8 @@
     <title>Editar Sim's</title>
     <link rel="stylesheet" href="../assets/style.css">
     <script src="../assets/script.js"></script>
+    <script src="https://cdn.tiny.cloud/1/yi9czmqgu0kxjjes78zwr7kns23e6z3itg8rb9hf3kguvk34/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 
 </head>
 <body>
@@ -50,13 +52,18 @@
                             <option value="Cambio de proveedor">Cambio de proveedor</option>
                             <option value="Falla técnica">Falla técnica</option>
                         </select>
-                        
+                    </div>
+
+                    <div>
+                        <h3>Observación:</h3>
+                        <textarea id="observacion"></textarea>
                     </div>
                     <button type="button" onclick="confirmarCambio()">Cambiar ICCID</button>
                 </div>
             </form>
         </section>
     </main>
+    <script src="assets/script.js"></script>
 
     <footer>
         <p>&copy; 2024 Antonia Pacheco. Todos los derechos reservados.</p>

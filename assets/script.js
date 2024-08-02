@@ -60,6 +60,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+
+/*Me sigue saliendo el error de This domain is not registered in the TinyMCE Customer Portal
+    Tengo que agregar el dominio a TinyMCE, actualmente no deja usarlo  */
 tinymce.init({
     selector: 'textarea',  // Reemplaza con el selector adecuado para tu caso
     plugins: 'advlist autolink lists link image charmap preview anchor textcolor',

@@ -96,24 +96,28 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background-color: white; /* Añadido para el fondo blanco de la tabla */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 
 th, td {
     padding: 12px;
     border: 1px solid #ddd;
     text-align: center;
-
+    background-color: white; /* Añadido para el fondo blanco de las celdas */
 }
 
 th {
     background-color: #4CAF50;
     color: white;
-
 }
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
 
 textarea {
     width: 100%;

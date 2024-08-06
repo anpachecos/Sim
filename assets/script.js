@@ -1,4 +1,52 @@
 
+
+
+/*Este script es para utilizand HANDSONTABLE y tener una tabla de excel para ingresar los datos. 
+Me gustaría utilizarla a futuro para listar SIM's y Val's*/
+document.addEventListener("DOMContentLoaded", function() {
+    var container = document.getElementById('handsontable-container');
+    var hot = new Handsontable(container, {
+        data: [],
+        rowHeaders: true,
+        colHeaders: ['Serie', 'AMID'],
+        columns: [
+            {data: 'serie', type: 'text'},
+            {data: 'amid', type: 'text'}
+        ],
+        colWidths: [300, 150],
+        minSpareRows: 1,
+        licenseKey: 'non-commercial-and-evaluation', // clave de licencia de evaluación
+        filters: true,
+        dropdownMenu: true
+    });
+
+    // Configuración del botón "Enviar Datos"
+    document.getElementById('submit-button').addEventListener('click', function() {
+        var data = hot.getData();
+        // Aquí puedes enviar los datos al servidor, por ejemplo, usando fetch:
+        fetch('/your-backend-endpoint', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response => {
+            if (response.ok) {
+                alert('Datos enviados exitosamente');
+            } else {
+                alert('Error al enviar datos');
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+    // Configuración del botón "Limpiar"
+    document.getElementById('clear-button').addEventListener('click', function() {
+        hot.loadData([]);  // Limpia los datos de la tabla
+    });
+});
+
 /*Este script es para mostrar la información del ICCID, la idea es que luego se busquen sus valores en la base de datos y recién allí aparezca*/
 function mostrarInfo() {
     const msisdnInfo = "56987787546";

@@ -131,3 +131,14 @@ textarea {
     box-sizing: border-box;
 }
 
+
+label, select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+select {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}

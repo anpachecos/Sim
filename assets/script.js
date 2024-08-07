@@ -1,4 +1,106 @@
+/*Con este script pongo los datos en la tabla container_listar_val. Después esto tiene que listar lo que hay en la base de datos*/
 
+document.addEventListener("DOMContentLoaded", function() {
+    var data_listar_val = [
+        ["280000011071", "7401107", "Barranca", "Terreno", "Operativo"],
+        ["280000010852", "7401085", "Barranca", "Lab ZP", "Disponible"],
+        ["280000009559", "7400955", "ZP 1001", "Terreno", "Operativo"],
+        ["280000011330", "7401133", "ZP 1001", "Lab ZP", "En custodia"],
+        ["280000013303", "7401330", "ZP 1001", "Terreno", "Operativo"],
+        ["280000009061", "7400906", "Contingencia ZP Subus", "Lab ZP", "Disponible"],
+        ["280000009344", "7400934", "Contingencia ZP Subus", "Terreno", "Operativo"],
+        ["280000008774", "7400877", "Contingencia ZP Vule", "Lab ZP", "En custodia"],
+        ["280000014898", "7401489", "Contingencia ZP Vule", "Terreno", "Operativo"],
+        ["280000007173", "7400717", "Contingencia ZP Voy Santiago", "Lab ZP", "Disponible"],
+        ["280000008743", "7400874", "Contingencia ZP Voy Santiago", "Terreno", "Operativo"],
+        ["280000012832", "7401283", "Contingencia ZP Metropolitana", "Lab ZP", "En custodia"],
+        ["280000039761", "7403976", "Contingencia ZP Metropolitana", "Terreno", "Operativo"],
+        ["280000015208", "7401520", "Contingencia ZP STP", "Lab ZP", "Disponible"],
+        ["280000012771", "7401277", "Contingencia ZP STP", "Terreno", "Operativo"],
+        ["280000012016", "7401201", "Contingencia ZP 1008", "Lab ZP", "En custodia"],
+        ["280000039808", "7403980", "Contingencia ZP 1008", "Terreno", "Operativo"],
+        ["280000012719", "7401271", "Contingencia ZP 1009", "Lab ZP", "Disponible"],
+        ["280000010807", "7401080", "Contingencia ZP 1009", "Terreno", "Operativo"],
+        ["280000008835", "7400883", "Contingencia ZP 1010", "Lab ZP", "En custodia"],
+        ["280000007371", "7400737", "Contingencia ZP 1010", "Terreno", "Operativo"],
+        ["280000012382", "7401238", "Contingencia ZP 1011", "Lab ZP", "Disponible"],
+        ["280000011750", "7401175", "Contingencia ZP 1011", "Terreno", "Operativo"],
+        ["280000006282", "7400628", "Contingencia ZP 1012", "Lab ZP", "En custodia"],
+        ["280000010890", "7401089", "Contingencia ZP 1012", "Terreno", "Operativo"],
+        ["280000012580", "7401258", "Contingencia ZP 1013", "Lab ZP", "Disponible"],
+        ["280000012283", "7401228", "Contingencia ZP 1013", "Terreno", "Operativo"],
+        ["280000042556", "7404255", "ZP Fija 119", "Lab ZP", "En custodia"]
+    ];
+    
+    /*Contenedor en el que pondremos una tabla, cuando queramos ponerlo en el HTML tendremos que usar un div con ese id
+    Ejemplo:             <div id="container_listar_val"></div>  */
+
+    var container_listar_val = document.getElementById('container_listar_val');
+
+    /**/
+    var filterDropdown = document.getElementById('filter-dropdown');
+
+    var hot = new Handsontable(container_listar_val, {
+        data: data_listar_val,
+        colHeaders: ['SERIE', 'AMID', 'Observación', 'Ubicación', 'Estado'],
+        rowHeaders: true,
+        filters: true,
+        dropdownMenu: true,
+        manualColumnResize: true,
+        contextMenu: {
+                items: {
+                    "row_above": {}, // Mantener opción de insertar fila arriba
+                    "row_below": {}, // Mantener opción de insertar fila abajo
+                    "remove_row": {}, // Mantener opción de eliminar fila
+                    "undo": {}, // Mantener opción de deshacer
+                    "redo": {}, // Mantener opción de rehacer
+                    "make_read_only": {}, // Mantener opción de solo lectura
+                    "alignment": {}, // Mantener opción de alineación
+                    "filter_by_value": {}, // Mantener opción de filtro por valor
+                    "filter_action_bar": {}, // Mantener opción de barra de acciones de filtro
+                    "---------": {}, // Separador
+                    "copy": {}, // Mantener opción de copiar
+                    "cut": {}, // Mantener opción de cortar
+                    "hidden_columns_hide": {}, // Mantener opción de ocultar columnas
+                    "hidden_columns_show": {}, // Mantener opción de mostrar columnas ocultas
+                    // Opciones a eliminar:
+                    "col_left": false, // Eliminar opción de agregar columna a la izquierda
+                    "col_right": false, // Eliminar opción de agregar columna a la derecha
+                    "remove_col": false, // Eliminar opción de eliminar columna
+                    "clear_column": false, // Eliminar opción de limpiar columna
+                }
+        },
+
+        licenseKey: 'non-commercial-and-evaluation',
+        cells: function(row, col, prop) {
+            var cellProperties = {};
+            cellProperties.readOnly = true; // Aquí se establece la celda como solo lectura, si no tuviera esto se podría editar
+            return cellProperties;
+        }
+    });
+
+    // Obtener las opciones únicas para el filtro
+    var uniqueObservations = Array.from(new Set(data_listar_val.map(row => row[2]))).sort();
+    
+    // Agregar las opciones al menú desplegable
+    uniqueObservations.forEach(function(observation) {
+        var option = document.createElement('option');
+        option.value = observation;
+        option.textContent = observation;
+        filterDropdown.appendChild(option);
+    });
+
+    // Filtrar la tabla cuando se seleccione una opción del menú desplegable
+    filterDropdown.addEventListener('change', function() {
+        var selectedObservation = filterDropdown.value;
+        if (selectedObservation) {
+            var filteredData = data.filter(row => row[2] === selectedObservation);
+            hot.loadData(filteredData);
+        } else {
+            hot.loadData(data); // Mostrar todos los datos si no se selecciona ninguna opción
+        }
+    });
+});
 
 
 /*Este script es para utilizand HANDSONTABLE y tener una tabla de excel para ingresar los datos. 

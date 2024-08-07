@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar Val's</title>
     <link rel="stylesheet" href="../assets/style.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@latest/dist/handsontable.full.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/handsontable@latest/dist/handsontable.full.min.js"></script>
+    <script src="../assets/script.js"></script>
 </head>
 <body>
     <header>Registro de Val's y Sim's | Zonas Pagas</header>
@@ -21,220 +23,15 @@
     </nav>
 
     <main>
+        <h3>Filtrar por: </h3>
+        <select id="filter-dropdown">
+            <option value="">Seleccionar Observación</option>
+        </select>
         <section id="editar_sim">
             <h2>Listar Vals</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>SERIE</th>
-                        <th>AMID</th>
-                        <th>Observación</th>
-                        <th>Ubicación</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>280000011071</td>
-                        <td>7401107</td>
-                        <td>Barranca</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000010852</td>
-                        <td>7401085</td>
-                        <td>Barranca</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000009559</td>
-                        <td>7400955</td>
-                        <td>ZP 1001</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000011330</td>
-                        <td>7401133</td>
-                        <td>ZP 1001</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000013303</td>
-                        <td>7401330</td>
-                        <td>ZP 1001</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000009061</td>
-                        <td>7400906</td>
-                        <td>Contingencia ZP Subus</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000009344</td>
-                        <td>7400934</td>
-                        <td>Contingencia ZP Subus</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000008774</td>
-                        <td>7400877</td>
-                        <td>Contingencia ZP Vule</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000014898</td>
-                        <td>7401489</td>
-                        <td>Contingencia ZP Vule</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000007173</td>
-                        <td>7400717</td>
-                        <td>Contingencia ZP Voy Santiago</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000008743</td>
-                        <td>7400874</td>
-                        <td>Contingencia ZP Voy Santiago</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000012832</td>
-                        <td>7401283</td>
-                        <td>Contingencia ZP Metropolitana</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000039761</td>
-                        <td>7403976</td>
-                        <td>Contingencia ZP Metropolitana</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000015208</td>
-                        <td>7401520</td>
-                        <td>Contingencia ZP STP</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000012771</td>
-                        <td>7401277</td>
-                        <td>Contingencia ZP STP</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000012016</td>
-                        <td>7401201</td>
-                        <td>Contingencia ZP 1008</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000039808</td>
-                        <td>7403980</td>
-                        <td>Contingencia ZP 1008</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000012719</td>
-                        <td>7401271</td>
-                        <td>Contingencia ZP 1009</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000010807</td>
-                        <td>7401080</td>
-                        <td>Contingencia ZP 1009</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000008835</td>
-                        <td>7400883</td>
-                        <td>Contingencia ZP 1010</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000007371</td>
-                        <td>7400737</td>
-                        <td>Contingencia ZP 1010</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000012382</td>
-                        <td>7401238</td>
-                        <td>Contingencia ZP 1011</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000011750</td>
-                        <td>7401175</td>
-                        <td>Contingencia ZP 1011</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000006282</td>
-                        <td>7400628</td>
-                        <td>Contingencia ZP 1012</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000010890</td>
-                        <td>7401089</td>
-                        <td>Contingencia ZP 1012</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000012580</td>
-                        <td>7401258</td>
-                        <td>Contingencia ZP 1013</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000012283</td>
-                        <td>7401228</td>
-                        <td>Contingencia ZP 1013</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>280000042556</td>
-                        <td>7404255</td>
-                        <td>ZP Fija 119</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="container_listar_val"></div>
         </section>
     </main>
- 
 
     <footer>
         <p>&copy; 2024 Antonia Pacheco. Todos los derechos reservados.</p>

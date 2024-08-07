@@ -37,9 +37,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var container_listar_val = document.getElementById('container_listar_val');
 
-    /**/
+    /*Filtros disponibles*/
     var filterDropdown = document.getElementById('filter-dropdown');
+    var filtroUbicaciones = document.getElementById('filtro_ubicaciones');
 
+    /*Configuración de la tabla*/
+    
     var hot = new Handsontable(container_listar_val, {
         data: data_listar_val,
         colHeaders: ['SERIE', 'AMID', 'Observación', 'Ubicación', 'Estado'],
@@ -48,29 +51,28 @@ document.addEventListener("DOMContentLoaded", function() {
         dropdownMenu: true,
         manualColumnResize: true,
         contextMenu: {
-                items: {
-                    "row_above": {}, // Mantener opción de insertar fila arriba
-                    "row_below": {}, // Mantener opción de insertar fila abajo
-                    "remove_row": {}, // Mantener opción de eliminar fila
-                    "undo": {}, // Mantener opción de deshacer
-                    "redo": {}, // Mantener opción de rehacer
-                    "make_read_only": {}, // Mantener opción de solo lectura
-                    "alignment": {}, // Mantener opción de alineación
-                    "filter_by_value": {}, // Mantener opción de filtro por valor
-                    "filter_action_bar": {}, // Mantener opción de barra de acciones de filtro
-                    "---------": {}, // Separador
-                    "copy": {}, // Mantener opción de copiar
-                    "cut": {}, // Mantener opción de cortar
-                    "hidden_columns_hide": {}, // Mantener opción de ocultar columnas
-                    "hidden_columns_show": {}, // Mantener opción de mostrar columnas ocultas
-                    // Opciones a eliminar:
-                    "col_left": false, // Eliminar opción de agregar columna a la izquierda
-                    "col_right": false, // Eliminar opción de agregar columna a la derecha
-                    "remove_col": false, // Eliminar opción de eliminar columna
-                    "clear_column": false, // Eliminar opción de limpiar columna
-                }
+            items: {
+                "row_above": {}, // Mantener opción de insertar fila arriba
+                "row_below": {}, // Mantener opción de insertar fila abajo
+                "remove_row": {}, // Mantener opción de eliminar fila
+                "undo": {}, // Mantener opción de deshacer
+                "redo": {}, // Mantener opción de rehacer
+                "make_read_only": {}, // Mantener opción de solo lectura
+                "alignment": {}, // Mantener opción de alineación
+                "filter_by_value": {}, // Mantener opción de filtro por valor
+                "filter_action_bar": {}, // Mantener opción de barra de acciones de filtro
+                "---------": {}, // Separador
+                "copy": {}, // Mantener opción de copiar
+                "cut": {}, // Mantener opción de cortar
+                "hidden_columns_hide": {}, // Mantener opción de ocultar columnas
+                "hidden_columns_show": {}, // Mantener opción de mostrar columnas ocultas
+                // Opciones a eliminar:
+                "col_left": false, // Eliminar opción de agregar columna a la izquierda
+                "col_right": false, // Eliminar opción de agregar columna a la derecha
+                "remove_col": false, // Eliminar opción de eliminar columna
+                "clear_column": false, // Eliminar opción de limpiar columna
+            }
         },
-
         licenseKey: 'non-commercial-and-evaluation',
         cells: function(row, col, prop) {
             var cellProperties = {};
@@ -81,7 +83,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Obtener las opciones únicas para el filtro
     var uniqueObservations = Array.from(new Set(data_listar_val.map(row => row[2]))).sort();
+    var ubicacionesUnicas = Array.from(new Set(data_listar_val.map(row => row[3]))).sort();
     
+    ubicacionesUnicas.forEach(function(ubicacion) {
+        var option = document.createElement('option');
+        option.value = ubicacion;
+        option.textContent = ubicacion;
+        filtroUbicaciones.appendChild(option);
+
+    });
+
+    filterDropdown.addEventListener('change', function() {
+        var opcionSeleccionada = filterDropdown.value;
+        if (opcionSeleccionada) {
+            var filteredData = data_listar_val.filter(row => row[3] === opcionSeleccionada);
+            hot.loadData(filteredData);
+        } else {
+            hot.loadData(data_listar_val); // Mostrar todos los datos si no se selecciona ninguna opción
+        }
+    });
+
     // Agregar las opciones al menú desplegable
     uniqueObservations.forEach(function(observation) {
         var option = document.createElement('option');
@@ -94,12 +115,15 @@ document.addEventListener("DOMContentLoaded", function() {
     filterDropdown.addEventListener('change', function() {
         var selectedObservation = filterDropdown.value;
         if (selectedObservation) {
-            var filteredData = data.filter(row => row[2] === selectedObservation);
+            var filteredData = data_listar_val.filter(row => row[2] === selectedObservation);
             hot.loadData(filteredData);
         } else {
-            hot.loadData(data); // Mostrar todos los datos si no se selecciona ninguna opción
+            hot.loadData(data_listar_val); // Mostrar todos los datos si no se selecciona ninguna opción
         }
     });
+
+
+
 });
 
 

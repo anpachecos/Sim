@@ -1,3 +1,18 @@
+#clear-filters {
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón */
+    font-size: 1em; /* Tamaño de fuente */
+}
+
+#clear-filters:hover {
+    background-color: #45a049; /* Color de fondo al pasar el ratón */
+}
+
+
 .ordenar_horizontal {    
     display: flex;
     flex-direction: row;
@@ -19,7 +34,7 @@
 .ordenar_horizontal select {
     max-width: 100%; /* Evita que el select se expanda más allá de su contenedor */
 }
-    
+
 
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;

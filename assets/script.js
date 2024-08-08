@@ -1,34 +1,38 @@
 document.addEventListener("DOMContentLoaded", function() {
+    
     var data_listar_val = [
-        ["280000011071", "7401107", "Barranca", "Terreno", "Operativo"],
-        ["280000010852", "7401085", "Barranca", "Lab ZP", "Disponible"],
-        ["280000009559", "7400955", "ZP 1001", "Terreno", "Operativo"],
-        ["280000011330", "7401133", "ZP 1001", "Lab ZP", "En custodia"],
-        ["280000013303", "7401330", "ZP 1001", "Terreno", "Operativo"],
-        ["280000009061", "7400906", "Contingencia ZP Subus", "Lab ZP", "Disponible"],
-        ["280000009344", "7400934", "Contingencia ZP Subus", "Terreno", "Operativo"],
-        ["280000008774", "7400877", "Contingencia ZP Vule", "Lab ZP", "En custodia"],
-        ["280000014898", "7401489", "Contingencia ZP Vule", "Terreno", "Operativo"],
-        ["280000007173", "7400717", "Contingencia ZP Voy Santiago", "Lab ZP", "Disponible"],
-        ["280000008743", "7400874", "Contingencia ZP Voy Santiago", "Terreno", "Operativo"],
-        ["280000012832", "7401283", "Contingencia ZP Metropolitana", "Lab ZP", "En custodia"],
-        ["280000039761", "7403976", "Contingencia ZP Metropolitana", "Terreno", "Operativo"],
-        ["280000015208", "7401520", "Contingencia ZP STP", "Lab ZP", "Disponible"],
-        ["280000012771", "7401277", "Contingencia ZP STP", "Terreno", "Operativo"],
-        ["280000012016", "7401201", "Contingencia ZP 1008", "Lab ZP", "En custodia"],
-        ["280000039808", "7403980", "Contingencia ZP 1008", "Terreno", "Operativo"],
-        ["280000012719", "7401271", "Contingencia ZP 1009", "Lab ZP", "Disponible"],
-        ["280000010807", "7401080", "Contingencia ZP 1009", "Terreno", "Operativo"],
-        ["280000008835", "7400883", "Contingencia ZP 1010", "Lab ZP", "En custodia"],
-        ["280000007371", "7400737", "Contingencia ZP 1010", "Terreno", "Operativo"],
-        ["280000012382", "7401238", "Contingencia ZP 1011", "Lab ZP", "Disponible"],
-        ["280000011750", "7401175", "Contingencia ZP 1011", "Terreno", "Operativo"],
-        ["280000006282", "7400628", "Contingencia ZP 1012", "Lab ZP", "En custodia"],
-        ["280000010890", "7401089", "Contingencia ZP 1012", "Terreno", "Operativo"],
-        ["280000012580", "7401258", "Contingencia ZP 1013", "Lab ZP", "Disponible"],
-        ["280000012283", "7401228", "Contingencia ZP 1013", "Terreno", "Operativo"],
-        ["280000042556", "7404255", "ZP Fija 119", "Lab ZP", "En custodia"]
+        ["280000011071", "7401107", "Barranca", "Terreno", "Operativo", "15-06-2024"],
+        ["280000010852", "7401085", "Barranca", "Lab ZP", "Disponible", "03-07-2024"],
+        ["280000009559", "7400955", "ZP 1001", "Terreno", "Operativo", "12-08-2024"],
+        ["280000011330", "7401133", "ZP 1001", "Lab ZP", "En custodia", "22-06-2024"],
+        ["280000013303", "7401330", "ZP 1001", "Terreno", "Operativo", "15-06-2024"],
+        ["280000009061", "7400906", "Contingencia ZP Subus", "Lab ZP", "Disponible", "25-07-2024"],
+        ["280000009344", "7400934", "Contingencia ZP Subus", "Terreno", "Operativo", "05-08-2024"],
+        ["280000008774", "7400877", "Contingencia ZP Vule", "Lab ZP", "En custodia", "03-07-2024"],
+        ["280000014898", "7401489", "Contingencia ZP Vule", "Terreno", "Operativo", "15-07-2024"],
+        ["280000007173", "7400717", "Contingencia ZP Voy Santiago", "Lab ZP", "Disponible", "01-08-2024"],
+        ["280000008743", "7400874", "Contingencia ZP Voy Santiago", "Terreno", "Operativo", "22-06-2024"],
+        ["280000012832", "7401283", "Contingencia ZP Metropolitana", "Lab ZP", "En custodia", "15-07-2024"],
+        ["280000039761", "7403976", "Contingencia ZP Metropolitana", "Terreno", "Operativo", "25-07-2024"],
+        ["280000015208", "7401520", "Contingencia ZP STP", "Lab ZP", "Disponible", "12-08-2024"],
+        ["280000012771", "7401277", "Contingencia ZP STP", "Terreno", "Operativo", "03-07-2024"],
+        ["280000012016", "7401201", "Contingencia ZP 1008", "Lab ZP", "En custodia", "15-06-2024"],
+        ["280000039808", "7403980", "Contingencia ZP 1008", "Terreno", "Operativo", "01-08-2024"],
+        ["280000012719", "7401271", "Contingencia ZP 1009", "Lab ZP", "Disponible", "22-06-2024"],
+        ["280000010807", "7401080", "Contingencia ZP 1009", "Terreno", "Operativo", "12-08-2024"],
+        ["280000008835", "7400883", "Contingencia ZP 1010", "Lab ZP", "En custodia", "25-07-2024"],
+        ["280000007371", "7400737", "Contingencia ZP 1010", "Terreno", "Operativo", "03-07-2024"],
+        ["280000012382", "7401238", "Contingencia ZP 1011", "Lab ZP", "Disponible", "15-07-2024"],
+        ["280000011750", "7401175", "Contingencia ZP 1011", "Terreno", "Operativo", "05-08-2024"],
+        ["280000006282", "7400628", "Contingencia ZP 1012", "Lab ZP", "En custodia", "03-07-2024"],
+        ["280000010890", "7401089", "Contingencia ZP 1012", "Terreno", "Operativo", "15-06-2024"],
+        ["280000012580", "7401258", "Contingencia ZP 1013", "Lab ZP", "Disponible", "25-07-2024"],
+        ["280000012283", "7401228", "Contingencia ZP 1013", "Terreno", "Operativo", "12-08-2024"],
+        ["280000042556", "7404255", "ZP Fija 119", "Lab ZP", "En custodia", "15-07-2024"]
+
     ];
+    
+
 
     // Contenedor en el que pondremos una tabla, cuando queramos ponerlo en el HTML tendremos que usar un div con ese id
     // Ejemplo: <div id="container_listar_val"></div>
@@ -37,11 +41,15 @@ document.addEventListener("DOMContentLoaded", function() {
     // Filtros disponibles
     var filterDropdown = document.getElementById('filter-dropdown');
     var filtroUbicaciones = document.getElementById('filtro_ubicaciones');
+    var filtroEstados = document.getElementById('filtro_estados');
+    var fechaDesde = document.getElementById('fecha-desde');
+    var fechaHasta = document.getElementById('fecha-hasta');
+    var filtrarFechasBtn = document.getElementById('filtrar-fechas');
 
     // Configuración de la tabla
     var hot = new Handsontable(container_listar_val, {
         data: data_listar_val,
-        colHeaders: ['SERIE', 'AMID', 'Observación', 'Ubicación', 'Estado'],
+        colHeaders: ['SERIE', 'AMID', 'Observación', 'Ubicación', 'Estado', 'Fecha Movimiento'],
         rowHeaders: true,
         filters: true,
         dropdownMenu: true,
@@ -80,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Obtener las opciones únicas para el filtro
     var uniqueObservations = Array.from(new Set(data_listar_val.map(row => row[2]))).sort();
     var ubicacionesUnicas = Array.from(new Set(data_listar_val.map(row => row[3]))).sort();
+    var estadosUnicas = Array.from(new Set(data_listar_val.map(row => row[4]))).sort();
 
     // Agregar las opciones al menú desplegable (Observación y Ubicación)
     uniqueObservations.forEach(function(observation) {
@@ -96,22 +105,61 @@ document.addEventListener("DOMContentLoaded", function() {
         filtroUbicaciones.appendChild(option);
     });
 
+    estadosUnicas.forEach(function(estado) {
+        var option = document.createElement('option');
+        option.value = estado;
+        option.textContent = estado;
+        filtroEstados.appendChild(option);
+    });
+
+
     // Filtrar la tabla cuando se seleccione una opción del menú desplegable
     function applyFilters() {
         var selectedObservation = filterDropdown.value;
         var selectedUbicacion = filtroUbicaciones.value;
+        var selectedEstado = filtroEstados.value;
+        var fechaDesdeValue = fechaDesde.value ? new Date(fechaDesde.value) : null;
+        var fechaHastaValue = fechaHasta.value ? new Date(fechaHasta.value) : null;
 
         var filteredData = data_listar_val.filter(function(row) {
             var observationMatch = !selectedObservation || row[2] === selectedObservation;
             var ubicacionMatch = !selectedUbicacion || row[3] === selectedUbicacion;
-            return observationMatch && ubicacionMatch;
+            var estadoMatch = !selectedEstado || row[4] === selectedEstado;
+
+            var fecha = new Date(row[5].split('-').reverse().join('-')); // Convertir a formato YYYY-MM-DD
+            
+            var dateMatch = true;
+            if (fechaDesdeValue) {
+                dateMatch = fecha >= fechaDesdeValue;
+            }
+            if (fechaHastaValue) {
+                dateMatch = dateMatch && fecha <= fechaHastaValue;
+            }
+
+            return observationMatch && ubicacionMatch && estadoMatch && dateMatch;
         });
 
+        // Aquí deberías actualizar la vista con los datos filtrados
+        // Por ejemplo, si estás usando Handsontable:
         hot.loadData(filteredData);
+    }
+
+    function clearFilters() {
+        filterDropdown.value = "";
+        filtroUbicaciones.value = "";
+        filtroEstados.value = "";
+
+        // Recargar la tabla con todos los datos
+        hot.loadData(data_listar_val);
     }
 
     filterDropdown.addEventListener('change', applyFilters);
     filtroUbicaciones.addEventListener('change', applyFilters);
+    filtroEstados.addEventListener('change', applyFilters);
+    filtrarFechasBtn.addEventListener('click', applyFilters);;
+
+    document.getElementById('clear-filters').addEventListener('click', clearFilters);
+
 });
 
 

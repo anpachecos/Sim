@@ -1,3 +1,26 @@
+.ordenar_horizontal {    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Distribuye uniformemente los elementos */
+}
+
+.ordenar_horizontal h4,
+.ordenar_horizontal select {
+    flex: 1; /* Cada elemento ocupará el mismo ancho */
+    margin: 0 10px; /* Añade un pequeño margen entre los elementos */
+    box-sizing: border-box; /* Asegura que padding y border no afecten el tamaño */
+}
+
+.ordenar_horizontal h4 {
+    text-align: right; /* Alinea el texto a la derecha para estar más cerca del selector */
+}
+
+.ordenar_horizontal select {
+    max-width: 100%; /* Evita que el select se expanda más allá de su contenedor */
+}
+    
+
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background-color: #f4f4f4;

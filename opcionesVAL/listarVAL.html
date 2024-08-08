@@ -24,12 +24,19 @@
 
     <main>
         <h3>Filtrar por: </h3>
-        <select id="filter-dropdown">
-            <option value="">Seleccionar Observación</option>
-        </select>
-        <select id="filtro_ubicaciones">
-            <option value="">Ubicación</option>
-        </select>
+       
+        <div class="ordenar_horizontal">
+            <h4>Observación: </h4>
+            <select id="filter-dropdown">
+                <option value="">Todos</option>
+            </select>
+            
+            <h4>Ubicación: </h4>
+            <select id="filtro_ubicaciones">
+                <option value="">Todos</option>
+            </select>
+        </div>
+
         <section id="editar_sim">
             <h2>Listar Vals</h2>
             <div id="container_listar_val"></div>

@@ -1,5 +1,3 @@
-/*Con este script pongo los datos en la tabla container_listar_val. Después esto tiene que listar lo que hay en la base de datos*/
-
 document.addEventListener("DOMContentLoaded", function() {
     var data_listar_val = [
         ["280000011071", "7401107", "Barranca", "Terreno", "Operativo"],
@@ -31,18 +29,16 @@ document.addEventListener("DOMContentLoaded", function() {
         ["280000012283", "7401228", "Contingencia ZP 1013", "Terreno", "Operativo"],
         ["280000042556", "7404255", "ZP Fija 119", "Lab ZP", "En custodia"]
     ];
-    
-    /*Contenedor en el que pondremos una tabla, cuando queramos ponerlo en el HTML tendremos que usar un div con ese id
-    Ejemplo:             <div id="container_listar_val"></div>  */
 
+    // Contenedor en el que pondremos una tabla, cuando queramos ponerlo en el HTML tendremos que usar un div con ese id
+    // Ejemplo: <div id="container_listar_val"></div>
     var container_listar_val = document.getElementById('container_listar_val');
 
-    /*Filtros disponibles*/
+    // Filtros disponibles
     var filterDropdown = document.getElementById('filter-dropdown');
     var filtroUbicaciones = document.getElementById('filtro_ubicaciones');
 
-    /*Configuración de la tabla*/
-    
+    // Configuración de la tabla
     var hot = new Handsontable(container_listar_val, {
         data: data_listar_val,
         colHeaders: ['SERIE', 'AMID', 'Observación', 'Ubicación', 'Estado'],
@@ -84,26 +80,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Obtener las opciones únicas para el filtro
     var uniqueObservations = Array.from(new Set(data_listar_val.map(row => row[2]))).sort();
     var ubicacionesUnicas = Array.from(new Set(data_listar_val.map(row => row[3]))).sort();
-    
-    ubicacionesUnicas.forEach(function(ubicacion) {
-        var option = document.createElement('option');
-        option.value = ubicacion;
-        option.textContent = ubicacion;
-        filtroUbicaciones.appendChild(option);
 
-    });
-
-    filterDropdown.addEventListener('change', function() {
-        var opcionSeleccionada = filterDropdown.value;
-        if (opcionSeleccionada) {
-            var filteredData = data_listar_val.filter(row => row[3] === opcionSeleccionada);
-            hot.loadData(filteredData);
-        } else {
-            hot.loadData(data_listar_val); // Mostrar todos los datos si no se selecciona ninguna opción
-        }
-    });
-
-    // Agregar las opciones al menú desplegable
+    // Agregar las opciones al menú desplegable (Observación y Ubicación)
     uniqueObservations.forEach(function(observation) {
         var option = document.createElement('option');
         option.value = observation;
@@ -111,19 +89,29 @@ document.addEventListener("DOMContentLoaded", function() {
         filterDropdown.appendChild(option);
     });
 
-    // Filtrar la tabla cuando se seleccione una opción del menú desplegable
-    filterDropdown.addEventListener('change', function() {
-        var selectedObservation = filterDropdown.value;
-        if (selectedObservation) {
-            var filteredData = data_listar_val.filter(row => row[2] === selectedObservation);
-            hot.loadData(filteredData);
-        } else {
-            hot.loadData(data_listar_val); // Mostrar todos los datos si no se selecciona ninguna opción
-        }
+    ubicacionesUnicas.forEach(function(ubicacion) {
+        var option = document.createElement('option');
+        option.value = ubicacion;
+        option.textContent = ubicacion;
+        filtroUbicaciones.appendChild(option);
     });
 
+    // Filtrar la tabla cuando se seleccione una opción del menú desplegable
+    function applyFilters() {
+        var selectedObservation = filterDropdown.value;
+        var selectedUbicacion = filtroUbicaciones.value;
 
+        var filteredData = data_listar_val.filter(function(row) {
+            var observationMatch = !selectedObservation || row[2] === selectedObservation;
+            var ubicacionMatch = !selectedUbicacion || row[3] === selectedUbicacion;
+            return observationMatch && ubicacionMatch;
+        });
 
+        hot.loadData(filteredData);
+    }
+
+    filterDropdown.addEventListener('change', applyFilters);
+    filtroUbicaciones.addEventListener('change', applyFilters);
 });
 
 

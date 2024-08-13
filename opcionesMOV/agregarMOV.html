@@ -30,8 +30,41 @@
             <form>
             <h2>Agregar Movimiento</h2>
             <p>A continuación, ingresa los amids de valildadores a mover. Debes seleccionar la ubicación a la que se van y el estado con el que irán. 
-                Si necesitas más información sobre los estados, puedes revisar el manual de ayuda aquí. <a href="../ayuda.html">Manual de Ayuda</a> </p>
+                Si necesitas más información sobre los estados, puedes revisar el manual de ayuda aquí > <a href="../ayuda.html">Manual de Ayuda</a> </p>
             
+            <p>Paso 1: Selecciona la ubicación y el estado de los validadores a mover. </p>
+                        <label for="ubicacion">Ubicación:</label>
+                        <select id="ubicacion" name="ubicacion" required>
+                            <option value="SONDA">SONDA</option>
+                            <option value="MTT">MTT</option>
+                            <option value="LAB-DEV">LAB-DEV</option>
+                            <option value="LAB-ZP">LAB-ZP</option>
+                            <option value="GARANTIA">GARANTÍA</option>
+                            <option value="TERRENO">TERRENO</option>
+                            <option value="DICTUC">DICTUC</option>
+                            <option value="AG ELECTRONIC">AG ELECTRONIC</option>
+                            <option value="DESCONOCIDO">DESCONOCIDO</option>
+                        </select>
+                    
+                    <label for="estado">Estado:</label>
+                        <select id="estado" name="estado" required>
+                            <option value="Prestamo">Préstamo</option>
+                            <option value="Disponible">Disponible</option>
+                            <option value="En custodia">En custodia</option>
+                            <option value="Falla">Falla</option>    
+                            <option value="Reparacion">Reparación</option>
+                            <option value="Operativo">Operativo</option>
+                            <option value="Robo">Robo</option>
+                            <option value="Extravio">Extravio</option>
+                            <option value="Desconocido">Desconocido</option>
+                        </select>
+
+            <p>Paso 2: Ingresa la Fecha en la que se genera el movimiento. </p>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+
+            <p>Paso 3: Ingresa los Validadores que moverás</p>
+
 
             <div id="handsontable-container"></div>
             <button type ="button" id="submit-button">Enviar Datos</button>

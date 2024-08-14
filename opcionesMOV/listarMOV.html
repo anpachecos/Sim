@@ -29,8 +29,34 @@
         <section>
             <form>
             <h2>Listar Movimientos</h2>
-           
-
+            <div class="ordenar_horizontal">
+                <h4>Observación: </h4>
+                <select id="filter-dropdown">
+                    <option value="">Todos</option>
+                </select>
+                
+                <h4>Ubicación: </h4>
+                <select id="filtro_ubicaciones">
+                    <option value="">Todos</option>
+                </select>
+    
+                <h4>Estado: </h4>
+                <select id="filtro_estados">
+                    <option value="">Todos</option>
+                </select>
+    
+                <h4>Fecha Desde:</h4>
+                <input type="date" id="fecha-desde">
+                
+                <h4>Fecha Hasta:</h4>
+                <input type="date" id="fecha-hasta">
+            
+                <button id="filtrar-fechas">Filtrar por Fecha</button>
+    
+                <button id="clear-filters">Limpiar Filtros</button>
+    
+            </div>
+    
             <div id="container_listar_MOV"></div>
 
             </form>
